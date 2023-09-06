@@ -1,0 +1,51 @@
+[sqlfluff]
+
+# Supported dialects https://docs.sqlfluff.com/en/stable/dialects.html
+# Or run 'sqlfluff dialects'
+dialect = None
+
+# One of [raw|jinja|python|placeholder]
+templater = raw
+
+# Comma separated list of rules to exclude, or None
+# See https://docs.sqlfluff.com/en/stable/configuration.html#enabling-and-disabling-rules
+# AM04 (ambiguous.column_count) and ST06 (structure.column_order) are
+# two of the more controversial rules included to illustrate usage.
+exclude_rules = ambiguous.column_count, structure.column_order
+
+max_line_length = 120
+
+# CPU processes to use while linting. -1 means use all processors but one. 0 means all cpus.
+processes = -1
+
+# If using the dbt templater, we recommend setting the project dir.
+[sqlfluff:templater:dbt]
+project_dir = ./
+
+[sqlfluff:indentation]
+allow_implicit_indents = true
+
+fix_even_unparsable = true
+
+[sqlfluff:rules:aliasing.table]
+aliasing = explicit
+[sqlfluff:rules:aliasing.column]
+aliasing = explicit
+# [sqlfluff:rules:aliasing.length]
+# min_alias_length = 3
+
+# See https://stackoverflow.com/questions/608196/why-should-i-capitalize-my-sql-keywords-is-there-a-good-reason
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+[sqlfluff:rules:capitalisation.identifiers]
+capitalisation_policy = lower
+[sqlfluff:rules:capitalisation.functions]
+extended_capitalisation_policy = lower
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = lower
+[sqlfluff:rules:capitalisation.types]
+extended_capitalisation_policy = lower
+
+verbose = 2
+
+warnings = L010

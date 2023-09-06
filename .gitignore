@@ -1,0 +1,16 @@
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+# tf lock files
+*.lock.hcl
+
+terraform.exe
+
+# Python venvs
+*venv*
+
+# vscode config
+*.vscode*
